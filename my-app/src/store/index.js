@@ -1,6 +1,6 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
-const initialState = { counter: 0, showCounter: true };
+const initialState = { counter: 0, showCounter: true, login: false };
 
 const counterSlice = createSlice({
   name: 'counter',
@@ -17,6 +17,9 @@ const counterSlice = createSlice({
     },
     toggleCounter(state) {
       state.showCounter = !state.showCounter;
+    },
+    loginSystem(state) {
+      state.login = !state.login;
     }
   }
 });

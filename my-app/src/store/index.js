@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-
+//Splitting Our Code
 import counterReducer from './counter';
 import authReducer from './auth';
 

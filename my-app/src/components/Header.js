@@ -1,33 +1,33 @@
-import React, {useState} from "react";
 import classes from "./Header.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import {CounterActions} from "../store/index";
+import {authActions} from "../store/auth";
 
 const Header = () => {
   const dispatch = useDispatch();
-  const staicLogin = useSelector((state) => state.login);
+  const isAuth = useSelector((state) => state.auth.isAuthenticated);
 
-  const toggleInputDialog = () => {
-    dispatch(CounterActions.loginSystem());
-    console.log(staicLogin);
-  }
+  const logoutHandler = () => {
+    dispatch(authActions.logout());
+  };
 
   return (
     <header className={classes.header}>
       <h1>Redux Auth</h1>
-      <nav>
-        <ul>
-          <li>
-            <a href="#">My Products</a>
-          </li>
-          <li>
-            <a href="#">My Sales</a>
-          </li>
-          <li>
-            <button onClick={toggleInputDialog}>Logout</button>
-          </li>
-        </ul>
-      </nav>
+      {isAuth && (
+        <nav>
+          <ul>
+            <li>
+              <a href="/">My Products</a>
+            </li>
+            <li>
+              <a href="/">My Sales</a>
+            </li>
+            <li>
+              <button onClick={logoutHandler}>Logout</button>
+            </li>
+          </ul>
+        </nav>
+      )}
     </header>
   );
 };
